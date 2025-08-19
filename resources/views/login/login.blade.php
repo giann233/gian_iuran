@@ -7,106 +7,184 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    body {
-      height: 100vh;
+    * {
       margin: 0;
-      display: flex;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    .left-panel {
-      background-color: #e6f0eb;
-      flex: 1;
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      flex-direction: column;
-      padding: 40px;
+      padding: 20px;
     }
 
-    .right-panel {
-      flex: 1;
-      background-color: #fff;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 60px;
+    .login-container {
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      width: 100%;
+      max-width: 400px;
+      animation: fadeIn 0.5s ease-in;
     }
 
-    .login-title {
-      font-size: 1.5rem;
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .login-header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 40px 30px;
+      text-align: center;
+    }
+
+    .login-header h1 {
+      font-size: 2.5rem;
+      font-weight: 300;
+      margin-bottom: 10px;
+    }
+
+    .login-header p {
+      opacity: 0.9;
+      font-size: 1.1rem;
+    }
+
+    .login-form {
+      padding: 40px 30px;
+    }
+
+    .form-group {
+      margin-bottom: 25px;
+    }
+
+    .form-label {
       font-weight: 600;
-      margin-bottom: 24px;
+      color: #333;
+      margin-bottom: 8px;
+      display: block;
     }
 
     .form-control {
-      margin-bottom: 16px;
+      width: 100%;
+      padding: 15px;
+      border: 2px solid #e1e5e9;
+      border-radius: 10px;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      background-color: #f8f9fa;
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: #667eea;
+      background-color: white;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
     }
 
     .btn-login {
-      background-color: #5c8d7a;
+      width: 100%;
+      padding: 15px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 10px;
     }
 
     .btn-login:hover {
-      background-color: #4c7b69;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
     }
 
-    .divider {
-      text-align: center;
-      margin: 20px 0;
+    .btn-login:active {
+      transform: translateY(0);
+    }
+
+    .brand-icon {
+      width: 60px;
+      height: 60px;
+      background: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      font-size: 24px;
+      font-weight: bold;
+      color: #667eea;
+    }
+
+    .input-group {
       position: relative;
     }
 
-    .divider::before, .divider::after {
-      content: "";
-      height: 1px;
-      background-color: #ccc;
+    .input-icon {
       position: absolute;
+      left: 15px;
       top: 50%;
-      width: 40%;
+      transform: translateY(-50%);
+      color: #999;
     }
 
-    .divider::before {
-      left: 0;
-    }
-
-    .divider::after {
-      right: 0;
+    .form-control.pl-45 {
+      padding-left: 45px;
     }
   </style>
 </head>
 <body>
-
-  <!-- Left Panel -->
-  <div class="left-panel text-center">
-    <img src="https://buserekspose.com/wp-content/uploads/2023/06/IMG-20230619-WA0122.jpg" alt="Exam Illustration" class="mb-4" style="max-width: 300px;">
-    <h2 class="fw-bold">Kaswarga</h2>
-    <p>.</p>
-  </div>
-
-  <!-- Right Panel -->
-  <div class="right-panel">
-    <!-- Logo Kaswarga -->
-    <div class="d-flex align-items-center gap-1 mb-4">
-      <div class="bg-success text-white fw-bold rounded-circle d-flex align-items-center justify-content-center"
-           style="width: 56px; height: 56px; font-size: 1.5rem;">
-        K
-      </div>
-      <span class="fw-bold" style="font-size: 1.8rem; margin-bottom: 4px">aswarga</span>
+  <div class="login-container">
+    <div class="login-header">
+      <div class="brand-icon">K</div>
+      <h1>Kaswarga</h1>
+      <p>Sistem Manajemen Iuran Warga</p>
     </div>
-    <div class="login-title">Sign In to Kaswarga</div>
-    <form method="POST" action="/login">
-      @csrf
-      <input type="text" name="username" class="form-control" placeholder="Username or email" required>
-      <input type="password" name="password" class="form-control" placeholder="Password" required>
 
-      {{-- <div class="d-flex justify-content-end mb-3">
-        <a href="/forgot-password" class="text-small">Forgot password?</a>
-      </div> --}}
+    <div class="login-form">
+      <form method="POST" action="/login">
+        @csrf
 
-      <button type="submit" class="btn btn-login w-100">Masuk</button>
-    </form>
+        <div class="form-group">
+          <label class="form-label">Username atau Email</label>
+          <div class="input-group">
+            <i class="fas fa-user input-icon"></i>
+            <input type="text" name="username" class="form-control pl-45" placeholder="Masukkan username atau email" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Password</label>
+          <div class="input-group">
+            <i class="fas fa-lock input-icon"></i>
+            <input type="password" name="password" class="form-control pl-45" placeholder="Masukkan password" required>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-login">
+          <i class="fas fa-sign-in-alt me-2"></i>Masuk
+        </button>
+      </form>
+
+      <div class="login-footer">
+        <p>Belum punya akun? <a href="/register">Daftar disini</a></p>
+      </div>
+    </div>
   </div>
-
 </body>
 </html>
