@@ -13,6 +13,9 @@ Route::get('/', function () {
 Route::get('/login', [LoginController::class, 'loginView'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('login.post');
 Route::get('/warga/dashboard', [WargaController::class, 'dashboard'])->name('warga.dashboard')->middleware('auth');
+Route::get('/warga/dashboard-new', function () {
+    return view('warga.dashboard_new');
+})->name('warga.dashboard.new')->middleware('auth');
 Route::get('/admin/dashboard', [AdminController::class, 'dashboardAdmin'])->name('admin.dashboard')->middleware('auth');
 Route::get('/register', [LoginController::class, 'showRegister'])->name('register');
 Route::post('/register', [LoginController::class, 'register'])->name('register.post');
@@ -28,3 +31,24 @@ Route::post('/user/delete/{id}', [AdminController::class, 'userDelete'])->name('
 Route::get('/officers', [AdminController::class, 'officersView'])->name('officers.index')->middleware('auth');
 Route::get('/officers/add', [AdminController::class, 'officerTambahView'])->name('officers.tambah')->middleware('auth');
 Route::post('/officers/add', [AdminController::class, 'officerTambah'])->name('officers.tambah.post')->middleware('auth');
+
+// Dues Category routes
+Route::get('/admin/dues_category', [AdminController::class, 'duesCategoryIndex'])->name('admin.dues_category.index')->middleware('auth');
+Route::get('/admin/dues_category/create', [AdminController::class, 'duesCategoryCreate'])->name('admin.dues_category.create')->middleware('auth');
+Route::post('/admin/dues_category', [AdminController::class, 'duesCategoryStore'])->name('admin.dues_category.store')->middleware('auth');
+Route::get('/admin/dues_category/{id}/edit', [AdminController::class, 'duesCategoryEdit'])->name('admin.dues_category.edit')->middleware('auth');
+Route::put('/admin/dues_category/{id}', [AdminController::class, 'duesCategoryUpdate'])->name('admin.dues_category.update')->middleware('auth');
+Route::delete('/admin/dues_category/{id}', [AdminController::class, 'duesCategoryDestroy'])->name('admin.dues_category.destroy')->middleware('auth');
+
+// Payment delete route
+Route::delete('/admin/payment/{id}', [AdminController::class, 'paymentDelete'])->name('admin.payment.delete')->middleware('auth');
+
+// Payment routes
+Route::get('/admin/payment', [AdminController::class, 'paymentIndex'])->name('admin.payment.index')->middleware('auth');
+Route::get('/admin/payment/create', [AdminController::class, 'paymentCreate'])->name('admin.payment.create')->middleware('auth');
+Route::post('/admin/payment', [AdminController::class, 'paymentStore'])->name('admin.payment.store')->middleware('auth');
+
+// Dues Members routes
+Route::get('/admin/dues-members', [AdminController::class, 'duesMembersIndex'])->name('admin.dues_members.index')->middleware('auth');
+Route::get('/admin/dues-members/create', [AdminController::class, 'duesMembersCreate'])->name('admin.dues_members.create')->middleware('auth');
+Route::post('/admin/dues-members', [AdminController::class, 'duesMembersStore'])->name('admin.dues_members.store')->middleware('auth');

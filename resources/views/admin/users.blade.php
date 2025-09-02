@@ -1,54 +1,77 @@
 @extends('admin.templateAdmin')
 @section('content')
 <div class="container py-4">
-    <h2 class="mb-4 fw-semibold">Data Pengguna</h2>
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="fw-bold text-success">📋 Data Pengguna</h2>
+        <a href="{{ route('user.tambah') }}" class="btn btn-success shadow-sm">
+            <i class="fas fa-user-plus me-2"></i>Tambah Pengguna
+        </a>
+    </div>
 
-    <form action="#" method="GET" class="row g-3 mb-3">
-        <div class="col-auto">
-            <input type="text" name="search" class="form-control" placeholder="Cari nama / username" value="{{ request('search') }}">
+    <!-- Form Pencarian -->
+    <form action="#" method="GET" class="row g-3 mb-4">
+        <div class="col-md-4">
+            <input type="text" name="search" class="form-control shadow-sm"
+                   placeholder="🔍 Cari nama / username" value="{{ request('search') }}">
         </div>
         <div class="col-auto">
-            <button type="submit" class="btn btn-primary">Cari</button>
-        </div>
-        <div class="col-auto">
-            <a href="{{ route('user.tambah') }}" class="btn btn-success">+ Tambah Pengguna</a>
+            <button type="submit" class="btn btn-primary shadow-sm">
+                <i class="fas fa-search me-1"></i>Cari
+            </button>
         </div>
     </form>
 
-    <div class="table-responsive">
-        <table class="table table-bordered table-hover align-middle">
-            <thead class="table-light">
+    <!-- Tabel -->
+    <div class="table-responsive shadow-sm rounded">
+        <table class="table table-hover align-middle mb-0">
+            <thead class="table-success text-dark">
                 <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Nama</th>
-                    <th scope="col">Username</th>
-                    <th scope="col">No HP</th>
-                    <th scope="col">Alamat</th>
-                    <th scope="col">Level</th>
-                    <th scope="col" class="text-center">Aksi</th>
+                    <th>ID</th>
+                    <th>Nama</th>
+                    <th>Username</th>
+                    <th>No HP</th>
+                    <th>Alamat</th>
+                    <th>Level</th>
+                    <th class="text-center">Aksi</th>
                 </tr>
             </thead>
             <tbody>
                 @forelse ($users as $user)
                 <tr>
-                    <td>{{ $user->id }}</td>
+                    <td class="fw-semibold text-secondary">{{ $user->id }}</td>
                     <td>{{ $user->name }}</td>
-                    <td>{{ $user->username }}</td>
-                    <td>{{ $user->phone}}</td>
+                    <td><span class="badge bg-light text-dark px-2">{{ $user->username }}</span></td>
+                    <td>{{ $user->phone }}</td>
                     <td>{{ $user->address }}</td>
-                    <td>{{ $user->role }}</td>
-
+                    <td>
+                        @if($user->role == 'admin')
+                            <span class="badge bg-danger">Admin</span>
+                        @elseif($user->role == 'officer')
+                            <span class="badge bg-primary">Petugas</span>
+                        @else
+                            <span class="badge bg-secondary">Warga</span>
+                        @endif
+                    </td>
                     <td class="text-center">
-                        <a href="{{ route('users.edit', $user->id) }}" class="btn btn-sm btn-warning">Edit</a>
-                        <form action="{{ route('users.delete', $user->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Yakin ingin hapus?')">
+                        <a href="{{ route('users.edit', $user->id) }}"
+                           class="btn btn-sm btn-warning shadow-sm me-1">
+                           <i class="fas fa-edit"></i>
+                        </a>
+                        <form action="{{ route('users.delete', $user->id) }}"
+                              method="POST" class="d-inline"
+                              onsubmit="return confirm('Yakin ingin hapus?')">
                             @csrf
-                            <button class="btn btn-sm btn-danger">Hapus</button>
+                            <button class="btn btn-sm btn-danger shadow-sm">
+                                <i class="fas fa-trash-alt"></i>
+                            </button>
                         </form>
                     </td>
                 </tr>
                 @empty
                 <tr>
-                    <td colspan="7" class="text-center text-muted">Tidak ada data pengguna.</td>
+                    <td colspan="7" class="text-center text-muted py-3">
+                        <i class="fas fa-info-circle me-2"></i> Tidak ada data pengguna.
+                    </td>
                 </tr>
                 @endforelse
             </tbody>

@@ -3,90 +3,177 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portal Kampung</title>
+    <title>Portal Warga</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-      rel="stylesheet"
-    />
+    <style>
+      body {
+        font-family: "Segoe UI", Arial, sans-serif;
+        background-color: #f4f7fb;
+      }
+
+      /* Navbar dengan gradient */
+      .navbar-custom {
+        background: linear-gradient(90deg, #0052a3, #007bff);
+      }
+
+      .navbar-custom .fw-bold {
+        color: #fff;
+        font-size: 1.2rem;
+      }
+
+      .navbar-custom .btn {
+        border-color: #fff;
+        color: #fff;
+        transition: 0.3s;
+      }
+
+      .navbar-custom .btn:hover {
+        background-color: #fff;
+        color: #0052a3;
+      }
+
+      /* Header */
+      header {
+        background: linear-gradient(to right, #e6f0ff, #ffffff);
+      }
+
+      header h2 {
+        font-weight: 700;
+      }
+
+      /* Section box */
+      .section-box {
+        border: none;
+        border-radius: 12px;
+        background-color: #fff;
+        padding: 25px;
+        height: 100%;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.06);
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+
+      .section-box:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+        background-color: #f9fcff;
+      }
+
+      .section-title {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #0052a3;
+        margin-bottom: 0.5rem;
+      }
+
+      .section-box i {
+        font-size: 2rem;
+        color: #007bff;
+        margin-bottom: 10px;
+      }
+
+      /* Info section */
+      .info-section {
+        background: #f0f6ff;
+        border-top: 2px solid #cfd9e3;
+      }
+
+      .info-section h5 {
+        color: #004080;
+      }
+
+      /* Footer */
+      footer {
+        font-size: 0.9rem;
+        color: #fff;
+        background: #0052a3;
+      }
+    </style>
+    <script
+      src="https://kit.fontawesome.com/yourkitid.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
-  <body class="bg-light">
-    <nav class="navbar navbar-light bg-white border-bottom shadow-sm">
-      <div class="container">
-        <div class="d-flex align-items-center gap-2">
-        <div class="bg-success text-white fw-bold rounded-circle d-flex align-items-center justify-content-center" style="width: 32px; height: 32px;">
-          K
-        </div>
-        <span class="fw-semibold">aswarga</span>
-      </div>
-        <div>
-          <a href="/login" class="btn btn-outline-dark">Masuk</a>
-        </div>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-custom py-2">
+      <div class="container d-flex justify-content-between align-items-center">
+        <div class="fw-bold">Portal Warga</div>
+        <a href="/login" class="btn btn-sm btn-outline-light">Masuk</a>
       </div>
     </nav>
 
-    <header class="bg-white py-5 border-bottom">
-      <div class="container text-center">
-        <h1 class="display-4 fw-bold">Satu Portal Untuk Semua Warga</h1>
-        <p class="text-muted fs-5">Kelola informasi kampung dengan tenang dan tertata. Transparan. Terintegrasi. Efisien.</p>
+    <!-- Header -->
+    <header class="py-5 border-bottom text-center">
+      <div class="container">
+        <h2 class="fw-bold text-primary">Satu Aplikasi untuk Semua Warga</h2>
+        <p class="text-muted">
+          Sederhana, efisien, dan mudah dipakai oleh semua kalangan.
+        </p>
       </div>
     </header>
 
+    <!-- Fitur Utama -->
     <section class="py-5">
       <div class="container">
         <div class="row g-4">
           <div class="col-md-4">
-            <div class="border rounded-4 p-4 bg-white h-100 shadow-sm">
-              <div class="mb-3">
-                <i class="fas fa-list-alt fa-xl text-success"></i>
-              </div>
-              <h5 class="fw-semibold">Data Warga</h5>
-              <p class="text-muted">Mencatat semua kepala keluarga dan anggota rumah secara detail dan aman.</p>
+            <div class="section-box text-center">
+              <i class="fas fa-users"></i>
+              <div class="section-title">Data Warga</div>
+              <p class="text-muted">
+                Pencatatan keluarga dan anggota rumah secara aman.
+              </p>
             </div>
           </div>
           <div class="col-md-4">
-            <div class="border rounded-4 p-4 bg-white h-100 shadow-sm">
-              <div class="mb-3">
-                <i class="fas fa-wallet fa-xl text-success"></i>
-              </div>
-              <h5 class="fw-semibold">Iuran & Keuangan</h5>
-              <p class="text-muted">Pencatatan pemasukan dan pengeluaran RT/RW dengan sistem yang transparan.</p>
+            <div class="section-box text-center">
+              <i class="fas fa-coins"></i>
+              <div class="section-title">Iuran & Keuangan</div>
+              <p class="text-muted">
+                Kelola pemasukan dan pengeluaran RT/RW secara transparan.
+              </p>
             </div>
           </div>
           <div class="col-md-4">
-            <div class="border rounded-4 p-4 bg-white h-100 shadow-sm">
-              <div class="mb-3">
-                <i class="fas fa-bullhorn fa-xl text-success"></i>
-              </div>
-              <h5 class="fw-semibold">Pengumuman & Agenda</h5>
-              <p class="text-muted">Warga bisa melihat pengumuman resmi, agenda rapat, dan kegiatan rutin.</p>
+            <div class="section-box text-center">
+              <i class="fas fa-calendar-alt"></i>
+              <div class="section-title">Agenda & Info</div>
+              <p class="text-muted">
+                Lihat pengumuman penting dan kegiatan rutin warga.
+              </p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="py-5 bg-white border-top">
+    <!-- Info tambahan -->
+    <section class="py-5 info-section">
       <div class="container">
-        <div class="row align-items-center gy-5">
+        <div class="row gy-4">
           <div class="col-md-6">
-            <h3 class="fw-bold mb-3">Tampilan Sederhana & Ramah Warga</h3>
-            <p class="text-muted">Didesain agar mudah digunakan oleh semua kalangan usia. Tidak butuh pelatihan teknis.</p>
+            <h5 class="fw-bold">Tampilan Mudah Dipahami</h5>
+            <p class="text-muted">
+              Tidak perlu belajar teknologi — cukup buka dan gunakan.
+            </p>
           </div>
           <div class="col-md-6">
-            <h3 class="fw-bold mb-3">Kontrol Penuh di Tangan Pengurus</h3>
-            <p class="text-muted">Data terpusat dan akses pengelolaan bisa dibagi ke pengurus RT, RW, atau Bendahara.</p>
+            <h5 class="fw-bold">Akses Khusus Pengurus</h5>
+            <p class="text-muted">
+              Data bisa diatur oleh RT, RW, dan bendahara sesuai peran.
+            </p>
           </div>
         </div>
       </div>
     </section>
 
-    <footer class="py-4 border-top bg-light mt-5">
-      <div class="container text-center small text-muted">
-        &copy; 2025 Portal Kampung. Seluruh hak cipta dilindungi undang-undang.
+    <!-- Footer -->
+    <footer class="py-3 mt-4">
+      <div class="container text-center">
+        &copy; 2025 Portal Warga. Hak cipta dilindungi undang-undang.
       </div>
     </footer>
 
